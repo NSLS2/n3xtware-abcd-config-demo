@@ -15,9 +15,8 @@ git clone https://github.com/nsls2/n3xtware-abcd-config-demo.git
 ```
 
 ### Purpose of the configuration repository (?)
-TODO (i.e. mimic the structure of our Ansible repository for this demo)
-
-Explain where the IOCs will be hosted and the workflow for this demo?
+This configuration provides a mimic of the configuration structure for `ioc-deploy-roles`. 
+This is to support a demonstration that deploys IOCs to a host on a LAN, and enable users to develop and modify configuration on an isolated network.
 
 ### Structure of the configuration repository
 
