@@ -2,12 +2,12 @@ test-detector:
   type: "ADSimDetector"
   environment:
     PREFIX: "XF:31ID1-ES{ADSIM:05}"
-    ENGINEER: "P. Maffettone"
+    ENGINEER: "K. Barry"
     XSIZE: "512"
     YSIZE: "512"
   ophyd:
     class_name: "SimDetectorTIFF"
-    instance_name: "adsim_05"
+    instance_name: "adsim_001"
     components:
       - "image"
       - "stats"
