@@ -1,4 +1,4 @@
-test-detector:
+test-detector-001:
   type: "ADSimDetector"
   environment:
     PREFIX: "XF:31ID1-ES{ADSIM:05}"
