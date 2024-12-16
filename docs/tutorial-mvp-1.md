@@ -214,6 +214,8 @@ tasks:
     - name: Deploy EPICS common files
     ansible.builtin.include_role:
         name: DeployCommon
+    vars:
+        - host_epics_intf: 192.168.1.165
 
     - name: Deploy Motor and Detector IOCs
     ansible.builtin.include_role:
@@ -304,6 +306,7 @@ run-phoebus
 - Create a mongo service on the ioc server
 - Create a tiled profile for tst to direct connect to mongo
 - Setup phoebus core using the `install_phoebus_all.yml` playbook in the `ansible-epics-tools` repository. This will require some downloading and creativity. (FWIW, Phil let `install_phoebus_all.yml` fail to get java, `install_phoebus.yml` to get phoebus, then manually found and added [phoebus preferences repo][] to `/opt/css/preferences`)
+- Necessary to use a local interface for EPICS so that broadcast works. The loopback (127.0.0.1/8) causes problems. 
 
 ### Mongo service
 
