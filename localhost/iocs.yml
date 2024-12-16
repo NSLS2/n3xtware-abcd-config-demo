@@ -1,3 +1,4 @@
 ---
 iocs:
   - "test-motor"
+  - "test-detector"
