@@ -3,7 +3,7 @@ test-motor:
   environment:
     SYS: "XF:31ID1-ES"
     CT_PREFIX: "XF:31ID1-ES{SIM-MC:05}"
-    ENGINEER: "P. Maffettone"
+    ENGINEER: "K. Barry"
     PORT: "MTR1"
     NUM_AXES: 6
   substitutions:
@@ -21,8 +21,8 @@ test-motor:
             - ["XF:31ID1-ES", "{MC:05-Ax:5}", "MTR1", "4", "MC05 Sim Roll", "degrees"]
             - ["XF:31ID1-ES", "{MC:05-Ax:6}", "MTR1", "5", "MC05 Sim Yaw", "degrees"]
   ophyd:
-    class_name: "SimMotor05"
-    instance_name: "sim_motor_05"
+    class_name: "SimMotor001"
+    instance_name: "sim_motor_001"
     components:
       - x
       - y
