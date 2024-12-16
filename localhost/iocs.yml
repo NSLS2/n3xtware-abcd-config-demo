@@ -2,3 +2,4 @@
 iocs:
   - "test-motor-001"
   - "test-detector-001"
+  - "test-motor-tom1"

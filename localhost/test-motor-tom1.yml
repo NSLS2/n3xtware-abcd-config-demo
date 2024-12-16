@@ -1,40 +1,40 @@
-mc-sim1:
-type: "MotorSim"  # Specifies that this is a motor sim IOC instance. Leave as is
-environment:
-    SYS: "XF:31ID1-ES" # First portion of prefix. Should match `P` attribute in substitutions
-    CT_PREFIX: "XF:31ID1-CT{SimMCTom:01}" # The admin controls PV prefix. (used for utils/ioc admin functions)
-    ENGINEER: "T. Hopkins" # Your name
-    PORT: "MTR1" # Asyn port ID. Must be same as PORT in substitutions. Typically leave as is
-    NUM_AXES: 10 # Number of axes
-substitutions:
-    motorSim:
-    templates:
-        SimMotor:
-        filepath: "$(TOP)/db/SimMotor.template"
-        #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
-        pattern: ["P",          "M",         "PORT",     "ADDR",  "DESC",       "EGU"]
-        instances:
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:1}", "MTR1", "0", "Sim Axis 1", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:2}", "MTR1", "1", "Sim Axis 2", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:3}", "MTR1", "2", "Sim Axis 3", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:4}", "MTR1", "3", "Sim Axis 4", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:5}", "MTR1", "4", "Sim Axis 5", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:6}", "MTR1", "5", "Sim Axis 6", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:7}", "MTR1", "6", "Sim Axis 7", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:8}", "MTR1", "7", "Sim Axis 8", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:9}", "MTR1", "8", "Sim Axis 9", "mm"]
-            - ["XF:31ID1-ES", "{SimMCTom:01-Ax:10}", "MTR1", "9", "Sim Axis 10", "mm"]
-ophyd:
-    class_name: "MotorSim"
-    instance_name: "my_motor_sim"
-    components:
-    - ax1
-    - ax2
-    - ax3
-    - ax4
-    - ax5
-    - ax6
-    - ax7
-    - ax8
-    - ax9
-    - ax10
+test-motor-tom1:
+  type: "MotorSim"  # Specifies that this is a motor sim IOC instance. Leave as is
+  environment:
+      SYS: "XF:31ID1-ES" # First portion of prefix. Should match `P` attribute in substitutions
+      CT_PREFIX: "XF:31ID1-CT{SimMCTom:01}" # The admin controls PV prefix. (used for utils/ioc admin functions)
+      ENGINEER: "T. Hopkins" # Your name
+      PORT: "MTR1" # Asyn port ID. Must be same as PORT in substitutions. Typically leave as is
+      NUM_AXES: 10 # Number of axes
+  substitutions:
+      motorSim:
+      templates:
+          SimMotor:
+          filepath: "$(TOP)/db/SimMotor.template"
+          #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
+          pattern: ["P",          "M",         "PORT",     "ADDR",  "DESC",       "EGU"]
+          instances:
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:1}", "MTR1", "0", "Sim Axis 1", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:2}", "MTR1", "1", "Sim Axis 2", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:3}", "MTR1", "2", "Sim Axis 3", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:4}", "MTR1", "3", "Sim Axis 4", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:5}", "MTR1", "4", "Sim Axis 5", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:6}", "MTR1", "5", "Sim Axis 6", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:7}", "MTR1", "6", "Sim Axis 7", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:8}", "MTR1", "7", "Sim Axis 8", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:9}", "MTR1", "8", "Sim Axis 9", "mm"]
+              - ["XF:31ID1-ES", "{SimMCTom:01-Ax:10}", "MTR1", "9", "Sim Axis 10", "mm"]
+  ophyd:
+      class_name: "MotorSim"
+      instance_name: "my_motor_sim"
+      components:
+      - ax1
+      - ax2
+      - ax3
+      - ax4
+      - ax5
+      - ax6
+      - ax7
+      - ax8
+      - ax9
+      - ax10
