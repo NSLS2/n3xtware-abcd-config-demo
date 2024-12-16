@@ -1,5 +1,5 @@
 ---
 beamline: "tst"
 hostname: "localhost"
-softioc_user: "pmaffetto"
+softioc_user: "thopkins1"
 host_epics_intf: "127.0.0.1"
