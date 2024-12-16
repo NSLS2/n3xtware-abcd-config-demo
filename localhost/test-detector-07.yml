@@ -1,0 +1,20 @@
+test-detector-07:
+  type: "ADSimDetector"
+  environment:
+    PREFIX: "XF:31ID1-ES{ADSIM:07}"
+    ENGINEER: "K. Shroff"
+    XSIZE: "512"
+    YSIZE: "512"
+  ophyd:
+    class_name: "SimDetectorTIFF"
+    instance_name: "adsim_07"
+    components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+    write_path_template: "/tmp/%Y/%m/%d/"
+    read_path_template: "/tmp/%Y/%m/%d/"
+    root: "/tmp"
