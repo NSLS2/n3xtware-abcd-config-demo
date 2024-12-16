@@ -14,15 +14,21 @@ In this tutorial we will be using the ABCD to configure and deploy the following
 git clone https://github.com/nsls2/n3xtware-abcd-config-demo.git
 ```
 
+### Purpose of the configuration repository (?)
+TODO (i.e. mimic the structure of our Ansible repository for this demo)
+
+Explain where the IOCs will be hosted and the workflow for this demo?
+
 ### Structure of the configuration repository
 
 Configuration is currently accomplished on a per-host basis. The files herein are a substitute to the `host_vars` directories in Ansible.
 The directories are named after the hosts that they are intended for, with YAML configuration according to the [ioc-deploy-roles n3xtware branch][].
+For example, to set up `host_vars` for this demo, we will use `<hostname>/host.yml`. For a `localhost` deployment, it would be under `localhost/host.yml`.
 
 ### IOC Configuration Conventions
 
 When deploying the IOCs for a host, the ansible role `DeployIOC` will iterate over the `iocs` list in the `ioc.yml` file in the host configuration directory.
-Each IOC in the list should have a corresponsing dictionary with key of the IOC name in one o the other files in configuration directory for the host.
+Each IOC in the list should have a corresponsing dictionary with key of the IOC name, which points to the configuration of the IOC. Then, the IOC configuration should be included in that same directory for the same host.
 The value of that key should be a dictionary with keys specific to the IOC; for more information consult the [ioc-deploy-roles n3xtware branch][].
 
 The `host.yml` file should contain the following keys, with examples below:
@@ -48,8 +54,9 @@ n3xtware-abcd-config-demo
 │   ├── motorsims.yml
 │   ├── areadetectors.yml
 ```
+Where we can group the configurations of individual IOCs based on the `type` of IOC into a single configuration file.
 
-However, during a group setting of rapid change, we would suggest using individual files for each IOC configuration to avoid merge conflicts. A downstream PR could refactor these many related IOCs into a single file.
+However, for this demo, we would suggest using individual files for each IOC configuration to avoid merge conflicts. A downstream PR could refactor these many related IOCs into a single file.
 
 ```plaintext
 n3xtware-abcd-config-demo
@@ -62,48 +69,48 @@ n3xtware-abcd-config-demo
 ...
 ```
 
-The motorsim role will construct an EPICS IOC and Bluesky Ophyd class. The IOC `type` for the ansible deployment is `MotorSim`. The class will use default component names of `ax{i}` if none are provided; however a `class_name` and `instance_name` are required.
+The motorsim role will construct an EPICS IOC and Bluesky Ophyd class. The IOC `type` for the ansible deployment is `MotorSim`. The class will use default component names of `ax{i}` if none are provided; however a `class_name` and `instance_name` are required for the Ophyd class generation.
 Currently only traditional ophyd sync is supported with ophyd-async support planned.
 
 Please follow the example configuration and assemble your own motor sim IOC config in a distinct file in the `localhost` directory. Push these changes to a branch, and open a PR to the `main` branch. The PR will be reviewed and merged by the proctoring team.
 
 ```yml
 mc-sim1:
-type: "MotorSim"  # Specifies that this is a motor sim IOC instance. Leave as is
-environment:
-    SYS: "XF:31ID1-ES" # First portion of prefix. Should match `P` attribute in substitutions
-    CT_PREFIX: "XF:31ID1-CT{SimMC:01}" # The admin controls PV prefix. (used for utils/ioc admin functions)
-    ENGINEER: "J. Wlodek" # Your name
-    PORT: "MTR1" # Asyn port ID. Must be same as PORT in substitutions. Typically leave as is
-    NUM_AXES: 8 # Number of axes
-substitutions:
-    motorSim:
-    templates:
-        SimMotor:
-        filepath: "$(TOP)/db/SimMotor.template"
-        #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
-        pattern: ["P",          "M",         "PORT",     "ADDR",  "DESC",       "EGU"]
-        instances:
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:1}", "MTR1", "0", "Sim Axis 1", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:2}", "MTR1", "1", "Sim Axis 2", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:3}", "MTR1", "2", "Sim Axis 3", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:4}", "MTR1", "3", "Sim Axis 4", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:5}", "MTR1", "4", "Sim Axis 5", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:6}", "MTR1", "5", "Sim Axis 6", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:7}", "MTR1", "6", "Sim Axis 7", "mm"]
-            - ["XF:31ID1-ES", "{SimMC:01-Ax:8}", "MTR1", "7", "Sim Axis 8", "mm"]
-ophyd:
-    class_name: "MotorSim"
-    instance_name: "my_motor_sim"
-    components:
-    - ax1
-    - ax2
-    - ax3
-    - ax4
-    - ax5
-    - ax6
-    - ax7
-    - ax8
+    type: "MotorSim"  # Specifies that this is a motor sim IOC instance. Leave as is
+    environment:
+        SYS: "XF:31ID1-ES" # First portion of prefix. Should match `P` attribute in substitutions
+        CT_PREFIX: "XF:31ID1-CT{SimMC:01}" # The admin controls PV prefix. (used for utils/ioc admin functions)
+        ENGINEER: "J. Wlodek" # Your name
+        PORT: "MTR1" # Asyn port ID. Must be same as PORT in substitutions. Typically leave as is
+        NUM_AXES: 8 # Number of axes
+    substitutions:
+        motorSim:
+        templates:
+            SimMotor:
+            filepath: "$(TOP)/db/SimMotor.template"
+            #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
+            pattern: ["P",          "M",         "PORT",     "ADDR",  "DESC",       "EGU"]
+            instances:
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:1}", "MTR1", "0", "Sim Axis 1", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:2}", "MTR1", "1", "Sim Axis 2", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:3}", "MTR1", "2", "Sim Axis 3", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:4}", "MTR1", "3", "Sim Axis 4", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:5}", "MTR1", "4", "Sim Axis 5", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:6}", "MTR1", "5", "Sim Axis 6", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:7}", "MTR1", "6", "Sim Axis 7", "mm"]
+                - ["XF:31ID1-ES", "{SimMC:01-Ax:8}", "MTR1", "7", "Sim Axis 8", "mm"]
+    ophyd:
+        class_name: "MotorSim"
+        instance_name: "my_motor_sim"
+        components:
+        - ax1
+        - ax2
+        - ax3
+        - ax4
+        - ax5
+        - ax6
+        - ax7
+        - ax8
 ```
 
 ## Step 3: Configure a simulated area detector
