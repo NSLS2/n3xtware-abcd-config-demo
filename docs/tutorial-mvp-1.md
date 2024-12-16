@@ -194,43 +194,47 @@ From here, we will write a single playbook to deploy our newly configured motor 
 ---
 # ioc-deploy-roles/my-test-playbook.yml
 - name: Deploy Motor and Detector IOCs
-hosts: localhost
-vars:
-    - RetrieveABCDConifg_repo: https://github.com/nsls2/n3xtware-abcd-config-demo.git
+  hosts: localhost
+  vars:
+    - RetrieveABCDConfig_repo: https://github.com/nsls2/n3xtware-abcd-config-demo.git
     - RetrieveABCDConfig_key_file: id_ed25519_n3xtware_abcd_config_demo
     - iocs_to_deploy:
-    - < MOTOR NAME >
-    - < DETECTOR NAME >
-tasks:
+        - MOTOR1 # CHANGE ME
+        - DET1 # CHANGE ME
+    - ansible_python_interpreter: /usr/bin/python3
+    - DeployIpythonProfile_ipython_dir: /opt/bluesky
+
+  tasks:
     - name: Ensure job is running against a single host
-    ansible.builtin.fail:
+      ansible.builtin.fail:
         msg: Refusing to run on more than one host
-    when: ansible_play_hosts | length > 1
+      when: ansible_play_hosts | length > 1
 
     - name: Retrieve ABCD Config
-    ansible.builtin.include_role:
-    name: RetrieveABCDConifg
+      ansible.builtin.include_role:
+        name: RetrieveABCDConifg
 
     - name: Deploy EPICS common files
-    ansible.builtin.include_role:
+      ansible.builtin.include_role:
         name: DeployCommon
-    vars:
-        - host_epics_intf: 192.168.1.165
+      vars:
+        - host_epics_intf: 192.168.1.165 # Forced for demo off loopback
 
     - name: Deploy Motor and Detector IOCs
-    ansible.builtin.include_role:
+      ansible.builtin.include_role:
         name: DeployIOC
-    loop: "{{ iocs_to_deploy }}"
+      loop: "{{ iocs_to_deploy }}"
+      loop_control:
         loop_var: ioc_name
         index_var: ioc_install_loop_index
-    vars:
+      vars:
         - _post_deploy_step: "Install and Enable and Start"
 
     - name: Deploy Bluesky Ipython Profile
-    ansible.builtin.include_role:
+      ansible.builtin.include_role:
         name: DeployIpythonProfile
-    vars:
-        - beamline_acronym: "TST"
+      vars:
+        - beamline_acronym: "tst"
         - operator_account: "operator"
         - DeployIpythonProfile_specific_iocs: "{{ iocs_to_deploy }}"
         - RetrieveABCDConfig_ioc_server: localhost
@@ -254,13 +258,13 @@ This role retrieves the necessary repositories, installs required Python package
 - name: Run Phoebus Autogen
 hosts: localhost
 tasks:
-    - name: PhoebusAutogen
-        ansible.builtin.include_role:
-        name: PhoebusAutogen
-        vars:
-        - PhoebusAutogen_beamline: TST
-        - PhoebusAutogen_retrieve_autogen_repos_enabled: true
-        - PhoebusAutogen_key_file: id_ed25519_n3xtware_phoebus_autogen_demo
+  - name: PhoebusAutogen
+    ansible.builtin.include_role:
+      name: PhoebusAutogen
+    vars:
+      - PhoebusAutogen_beamline: tst
+      - PhoebusAutogen_retrieve_autogen_repos_enabled: true
+      - PhoebusAutogen_key_file: id_ed25519_n3xtware_phoebus_autogen_demo
 ```
 
 ## Step 6: Run your 'beamline'
