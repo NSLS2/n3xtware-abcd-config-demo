@@ -1,5 +1,7 @@
 # Demo Configuration For N3XTware Ansible Based Configuration and Deployment (ABCD)
 
+A tutorial for the N3XTware SDAT can be found in [docs/tutorial-mvp-1.md](https://github.com/NSLS2/n3xtware-abcd-config-demo/blob/main/docs/tutorial-mvp-1.md).
+
 Configuration is currently accomplished on a per-host basis. The files herein are a substitute to the `host_vars` directories in Ansible.
 The directories are named after the hosts that they are intended for, with YAML configuration according to the [ioc-deploy-roles n3xtware branch](https://github.com/nsls2/ioc-deploy-roles/tree/n3xtware).
 
