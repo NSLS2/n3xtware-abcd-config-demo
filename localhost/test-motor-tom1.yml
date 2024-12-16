@@ -26,7 +26,7 @@ test-motor-tom1:
               - ["XF:31ID1-ES", "{SimMCTom:01-Ax:10}", "MTR1", "9", "Sim Axis 10", "mm"]
   ophyd:
       class_name: "MotorSim"
-      instance_name: "my_motor_sim"
+      instance_name: "toms_motor_sim"
       components:
       - ax1
       - ax2
