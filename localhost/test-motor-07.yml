@@ -1,0 +1,32 @@
+test-motor-07:
+  type: "MotorSim"
+  environment:
+    SYS: "XF:31ID1-ES"
+    CT_PREFIX: "XF:31ID1-ES{SIM-MC:07}"
+    ENGINEER: "K. Shroff"
+    PORT: "MTR1"
+    NUM_AXES: 6
+  substitutions:
+    motorSim:
+      templates:
+        SimMotor:
+          filepath: "$(TOP)/db/SimMotor.template"
+          #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
+          pattern: ["P", "M", "PORT", "ADDR", "DESC", "EGU"]
+          instances:
+            - ["XF:31ID1-ES", "{MC:07-Ax:1}", "MTR1", "0", "MC07 Sim X Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:07-Ax:2}", "MTR1", "1", "MC07 Sim Y Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:07-Ax:3}", "MTR1", "2", "MC07 Sim Z Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:07-Ax:4}", "MTR1", "3", "MC07 Sim Pitch", "degrees"]
+            - ["XF:31ID1-ES", "{MC:07-Ax:5}", "MTR1", "4", "MC07 Sim Roll", "degrees"]
+            - ["XF:31ID1-ES", "{MC:07-Ax:6}", "MTR1", "5", "MC07 Sim Yaw", "degrees"]
+  ophyd:
+    class_name: "SimMotor07"
+    instance_name: "sim_motor_07"
+    components:
+      - x
+      - y
+      - z
+      - pitch
+      - roll
+      - yaw

@@ -1,5 +1,7 @@
 ---
 iocs:
-  - "test-motor-001"
-  - "test-detector-001"
+  - "test-motor"
+  - "test-detector"
+  - "test-motor-07"
+  - "test-detector-07"
   - "test-motor-tom1"
