@@ -3,8 +3,8 @@ rivers-detector:
   environment:
     PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
     ENGINEER: "P. Maffettone"
-    XSIZE: "512"
-    YSIZE: "512"
+    XSIZE: "2048"
+    YSIZE: "2048"
   ophyd:
     class_name: "SimDetectorTIFF"
     instance_name: "adsim_example"
@@ -15,6 +15,7 @@ rivers-detector:
       - "process"
       - "transform"
       - "tiff"
+      - "hdf5"
     write_path_template: "/tmp/%Y/%m/%d/"
     read_path_template: "/tmp/%Y/%m/%d/"
     root: "/tmp"
