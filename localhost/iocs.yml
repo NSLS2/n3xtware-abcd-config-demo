@@ -1,4 +1,3 @@
----
 iocs:
   - "pmh-motor"
   - "pmh-detector"
