@@ -21,8 +21,8 @@ motorvation:
             - ["XF:NeXT", "{MC:05-Ax:5}", "MTR1", "4", "MC05 Sim Roll", "degrees"]
             - ["XF:NeXT", "{MC:05-Ax:6}", "MTR1", "5", "MC05 Sim Yaw", "degrees"]
   ophyd:
-    class_name: "SimMotorExample"
-    instance_name: "sim_motor_example"
+    class_name: "SimMotorExampleNext"
+    instance_name: "sim_motor_example_next"
     components:
       - x
       - y
