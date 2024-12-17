@@ -1,0 +1,32 @@
+example-eliot-motor:
+  type: "MotorSim"
+  environment:
+    SYS: "XF:31ID1-ES"
+    CT_PREFIX: "XF:31ID1-ES{SIM-MC:ELIOT}"
+    ENGINEER: "E. Gann"
+    PORT: "MTR1"
+    NUM_AXES: 6
+  substitutions:
+    motorSim:
+      templates:
+        SimMotor:
+          filepath: "$(TOP)/db/SimMotor.template"
+          #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
+          pattern: ["P", "M", "PORT", "ADDR", "DESC", "EGU"]
+          instances:
+            - ["XF:31ID1-ES", "{MC:05-Ax:1}", "MTR1", "0", "Eliot Sim up down Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:05-Ax:2}", "MTR1", "1", "Eliot Sim side to side Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:05-Ax:3}", "MTR1", "2", "Eliot Sim forward backward Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:05-Ax:4}", "MTR1", "3", "Eliot Sim Pitch", "degrees"]
+            - ["XF:31ID1-ES", "{MC:05-Ax:5}", "MTR1", "4", "Eliot Sim Roll", "degrees"]
+            - ["XF:31ID1-ES", "{MC:05-Ax:6}", "MTR1", "5", "Eliot Sim Yaw", "degrees"]
+  ophyd:
+    class_name: "SimMotorExample"
+    instance_name: "sim_motor_example"
+    components:
+      - ud
+      - ss
+      - fb
+      - pitch
+      - roll
+      - yaw
