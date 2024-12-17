@@ -1,7 +1,7 @@
 rivers-detector:
   type: "ADSimDetector"
   environment:
-    PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
+    PREFIX: "XF:31ID1-MR{ADSIM:EX}:"
     ENGINEER: "P. Maffettone"
     XSIZE: "2048"
     YSIZE: "2048"
