@@ -14,12 +14,12 @@ mutti-motor:
           #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
           pattern: ["P", "M", "PORT", "ADDR", "DESC", "EGU"]
           instances:
-            - ["XF:31ID1-ES", "{MC:05-Ax:1}", "MTR1", "0", "MC05 Sim X Axis", "mm"]
-            - ["XF:31ID1-ES", "{MC:05-Ax:2}", "MTR1", "1", "MC05 Sim Y Axis", "mm"]
-            - ["XF:31ID1-ES", "{MC:05-Ax:3}", "MTR1", "2", "MC05 Sim Z Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:MUTTI-Ax:1}", "MTR1", "0", "MC05 Sim X Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:MUTTI-Ax:2}", "MTR1", "1", "MC05 Sim Y Axis", "mm"]
+            - ["XF:31ID1-ES", "{MC:MUTTI-Ax:3}", "MTR1", "2", "MC05 Sim Z Axis", "mm"]
   ophyd:
-    class_name: "SimMotorExample"
-    instance_name: "sim_motor_example"
+    class_name: "SimMotorExampleMutti"
+    instance_name: "sim_motor_example_mutti"
     components:
       - x
       - y

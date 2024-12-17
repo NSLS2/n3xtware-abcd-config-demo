@@ -1,13 +1,13 @@
 mutti-detector:
   type: "ADSimDetector"
   environment:
-    PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
+    PREFIX: "XF:31ID1-ES{ADSIM:MUTTI}:"
     ENGINEER: "P. Mutti"
     XSIZE: "1024"
     YSIZE: "1024
   ophyd:
-    class_name: "SimDetectorTIFF"
-    instance_name: "adsim_example"
+    class_name: "SimDetectorTIFFMutti"
+    instance_name: "adsim_example_mutti"
     components:
       - "image"
       - "stats"
