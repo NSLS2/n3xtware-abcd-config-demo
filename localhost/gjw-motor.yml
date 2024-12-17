@@ -21,7 +21,7 @@ example-motor-gjw:
             - ["XF:31ID1-ES", "{MC:05-Ax:5}", "MTR1", "4", "MC05 Sim Roll", "radians"]
             - ["XF:31ID1-ES", "{MC:05-Ax:6}", "MTR1", "5", "MC05 Sim Yaw", "mrad"]
   ophyd:
-    class_name: "SimMotorExample"
+    class_name: "SimMotorExampleGWJ"
     instance_name: "sim_motor_example"
     components:
       - x
