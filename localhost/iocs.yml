@@ -3,3 +3,4 @@ iocs:
   - "example-motor"
   - "example-detector"
   - "motorvation"
+  - "example-eliot-motor"
