@@ -1,4 +1,4 @@
-example-motor:
+motorvation:
   type: "MotorSim"
   environment:
     SYS: "XF:NeXT"
