@@ -6,8 +6,8 @@ rivers-detector:
     XSIZE: "2048"
     YSIZE: "2048"
   ophyd:
-    class_name: "SimDetectorTIFF"
-    instance_name: "adsim_example"
+    class_name: "SimDetectorTIFFMR"
+    instance_name: "adsim_example_mr"
     components:
       - "image"
       - "stats"
