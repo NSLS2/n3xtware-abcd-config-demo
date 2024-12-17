@@ -1,5 +1,7 @@
 ---
 iocs:
+  - "example-motor-gjw"
+  - "example-detector-gjw"
   - "example-motor"
   - "example-detector"
   - "example-eliot-motor"
