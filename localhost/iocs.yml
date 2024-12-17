@@ -1,5 +1,7 @@
 ---
 iocs:
+  - "mutti-motor"
+  - "mutti-detector"
   - "pmh-motor"
   - "pmh-detector"
   - "example-motor-gjw"
