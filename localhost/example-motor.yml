@@ -1,4 +1,4 @@
-example-motor:
+examples-motor:
   type: "MotorSim"
   environment:
     SYS: "XF:31ID1-ES"

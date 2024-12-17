@@ -1,0 +1,21 @@
+rivers-detector:
+  type: "ADSimDetector"
+  environment:
+    PREFIX: "XF:31ID1-MR{ADSIM:EX}:"
+    ENGINEER: "P. Maffettone"
+    XSIZE: "2048"
+    YSIZE: "2048"
+  ophyd:
+    class_name: "SimDetectorTIFFMR"
+    instance_name: "adsim_example_mr"
+    components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+      - "hdf5"
+    write_path_template: "/tmp/%Y/%m/%d/"
+    read_path_template: "/tmp/%Y/%m/%d/"
+    root: "/tmp"

@@ -1,0 +1,32 @@
+rivers-motor:
+  type: "MotorSim"
+  environment:
+    SYS: "XF:31ID1-ES"
+    CT_PREFIX: "XF:31ID1-ES{SIM-MC:EX}"
+    ENGINEER: "P. Maffettone"
+    PORT: "MTR1"
+    NUM_AXES: 6
+  substitutions:
+    motorSim:
+      templates:
+        SimMotor:
+          filepath: "$(TOP)/db/SimMotor.template"
+          #         Base Prefix | Motor name | Asyn Port | Axis # | Description | Units
+          pattern: ["P", "M", "PORT", "ADDR", "DESC", "EGU"]
+          instances:
+            - ["XF:31ID1-MR", "{MC:05-Ax:1}", "MTR1", "0", "MC05 Sim X Axis", "mm"]
+            - ["XF:31ID1-MR", "{MC:05-Ax:2}", "MTR1", "1", "MC05 Sim Y Axis", "mm"]
+            - ["XF:31ID1-MR", "{MC:05-Ax:3}", "MTR1", "2", "MC05 Sim Z Axis", "mm"]
+            - ["XF:31ID1-MR", "{MC:05-Ax:4}", "MTR1", "3", "MC05 Sim Pitch", "degrees"]
+            - ["XF:31ID1-MR", "{MC:05-Ax:5}", "MTR1", "4", "MC05 Sim Roll", "degrees"]
+            - ["XF:31ID1-MR", "{MC:05-Ax:6}", "MTR1", "5", "MC05 Sim Yaw", "degrees"]
+  ophyd:
+    class_name: "SimMotorExampleMR"
+    instance_name: "sim_motor_example_mr"
+    components:
+      - x
+      - y
+      - z
+      - pitch
+      - roll
+      - yaw
