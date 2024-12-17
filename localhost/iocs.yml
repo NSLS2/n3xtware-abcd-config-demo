@@ -1,5 +1,7 @@
 ---
 iocs:
+  - "pmh-motor"
+  - "pmh-detector"
   - "example-motor-gjw"
   - "example-detector-gjw"
   - "example-motor"
