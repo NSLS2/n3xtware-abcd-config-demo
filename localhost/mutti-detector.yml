@@ -1,0 +1,20 @@
+mutti-detector:
+  type: "ADSimDetector"
+  environment:
+    PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
+    ENGINEER: "P. Mutti"
+    XSIZE: "1024"
+    YSIZE: "1024
+  ophyd:
+    class_name: "SimDetectorTIFF"
+    instance_name: "adsim_example"
+    components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+    write_path_template: "/tmp/%Y/%m/%d/"
+    read_path_template: "/tmp/%Y/%m/%d/"
+    root: "/tmp"

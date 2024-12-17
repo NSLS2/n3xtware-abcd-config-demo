@@ -1,4 +1,4 @@
 ---
 iocs:
-  - "example-motor"
-  - "example-detector"
+  - "mutti-motor"
+  - "mutti-detector"
