@@ -2,3 +2,4 @@
 iocs:
   - "example-motor"
   - "example-detector"
+  - "example-eliot-motor"
