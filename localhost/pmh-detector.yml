@@ -6,8 +6,8 @@ pmh-detector:
     XSIZE: "512"
     YSIZE: "512"
   ophyd:
-    class_name: "SimDetectorTIFF"
-    instance_name: "adsim_example"
+    class_name: "SimDetectorTIFFHanlet"
+    instance_name: "adsim_example_hanlet"
     components:
       - "image"
       - "stats"
