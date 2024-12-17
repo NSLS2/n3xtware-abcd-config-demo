@@ -137,53 +137,53 @@ Please follow the example configuration and assemble your own motor sim IOC conf
 
 ```yml
 cam-sim1: # Name of your IOC, should match name of yml file and your 
-type: "ADSimDetector" # Type of IOC - should always stay ADSimDetector
-environment:
-    PREFIX: "XF:31ID1-ES{SIM-Cam:1}" # EPICS PV Prefix. See BL PV naming conventions
-    ENGINEER: "J. Wlodek" # Your Name
+  type: "ADSimDetector" # Type of IOC - should always stay ADSimDetector
+  environment:
+      PREFIX: "XF:31ID1-ES{SIM-Cam:1}" # EPICS PV Prefix. See BL PV naming conventions
+      ENGINEER: "J. Wlodek" # Your Name
 
-    # Dimensions of the simulated image in x and y
-    XSIZE: "1024"
-    YSIZE: "1024"
+      # Dimensions of the simulated image in x and y
+      XSIZE: "1024"
+      YSIZE: "1024"
 
-ophyd:
-    class_name: "SimDetectorTIFF"
-    instance_name: "cam-sim1"
-    components:
-    - "image"
-    - "stats"
-    - "roi"
-    - "process"
-    - "transform"
-    - "tiff"
-    write_path_template: "/tmp/%Y/%m/%d/"
-    read_path_template: "/tmp/%Y/%m/%d/"
-    root: "/tmp"
+  ophyd:
+      class_name: "SimDetectorTIFF"
+      instance_name: "cam-sim1"
+      components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+      write_path_template: "/tmp/%Y/%m/%d/"
+      read_path_template: "/tmp/%Y/%m/%d/"
+      root: "/tmp"
 
-cam-sim2: # Name of second IOC
-type: "ADSimDetector" # Type of IOC - should always stay ADSimDetector
-environment:
-    PREFIX: "XF:31ID1-ES{SIM-Cam:2}" # EPICS PV Prefix. See BL PV naming conventions
-    ENGINEER: "J. Wlodek" # Your Name
+  cam-sim2: # Name of second IOC
+  type: "ADSimDetector" # Type of IOC - should always stay ADSimDetector
+  environment:
+      PREFIX: "XF:31ID1-ES{SIM-Cam:2}" # EPICS PV Prefix. See BL PV naming conventions
+      ENGINEER: "J. Wlodek" # Your Name
 
-    # Dimensions of the simulated image in x and y
-    XSIZE: "1024"
-    YSIZE: "1024"
+      # Dimensions of the simulated image in x and y
+      XSIZE: "1024"
+      YSIZE: "1024"
 
-ophyd:
-    class_name: "SimDetectorTIFF" # Because this is an existing class, the configuration must be the same.
-    instance_name: "cam-sim2" # New instance name
-    # Since the class name is the same, the components and other configuration must be the same
-    components:
-    - "image"
-    - "stats"
-    - "roi"
-    - "process"
-    - "transform"
-    - "tiff"
-    write_path_template: "/tmp/%Y/%m/%d/"
-    read_path_template: "/tmp/%Y/%m/%d/"
-    root: "/tmp"
+  ophyd:
+      class_name: "SimDetectorTIFF" # Because this is an existing class, the configuration must be the same.
+      instance_name: "cam-sim2" # New instance name
+      # Since the class name is the same, the components and other configuration must be the same
+      components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+      write_path_template: "/tmp/%Y/%m/%d/"
+      read_path_template: "/tmp/%Y/%m/%d/"
+      root: "/tmp"
 ```
 
 ## Step 4: Deploy the IOCs
@@ -192,7 +192,7 @@ For the tutorial session, we will be performing a deployment on an IOC server by
 Doing this, we avoid some of the complexities of Ansible deployments that are accomplished in our facility wide deployment (e.g., networking, inventory, ansible-vault, privilege escalation).
 For details on the NSLS-II ansible deployment and Ansible Automation Platform for managing our inventories, see the [NSLS-II Docs].
 
-Begin by loging into the IOC server and navigating to the `ioc-deploy-roles` repository: `cd /opt/n3xtware/ioc-deploy-roles/`.
+Begin by logging into the IOC server and navigating to the `ioc-deploy-roles` repository: `cd /opt/n3xtware/ioc-deploy-roles/`.
 Log in by ssh as root with the IP and password provided by the proctors, or logging in directly to the workstation if available.
 From here, we will write a single playbook to deploy our newly configured motor and detector IOCs, and their [Bluesky] configuration. We will deploy [Phoebus] screens for all IOCs at once in a single playbook.
 
