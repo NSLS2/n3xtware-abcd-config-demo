@@ -1,10 +1,10 @@
-example-detector:
+example-detector-gjw:
   type: "ADSimDetector"
   environment:
     PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
-    ENGINEER: "P. Maffettone"
+    ENGINEER: "GJW"
     XSIZE: "512"
-    YSIZE: "512"
+    YSIZE: "368"
   ophyd:
     class_name: "SimDetectorTIFF"
     instance_name: "adsim_example"
