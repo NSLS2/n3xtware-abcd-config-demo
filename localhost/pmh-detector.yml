@@ -1,0 +1,20 @@
+pmh-detector:
+  type: "ADSimDetector"
+  environment:
+    PREFIX: "XF:31ID1-ES{PMH:EX}:"
+    ENGINEER: "P. Hanlet"
+    XSIZE: "512"
+    YSIZE: "512"
+  ophyd:
+    class_name: "SimDetectorTIFFHanlet"
+    instance_name: "adsim_example_hanlet"
+    components:
+      - "image"
+      - "stats"
+      - "roi"
+      - "process"
+      - "transform"
+      - "tiff"
+    write_path_template: "/tmp/%Y/%m/%d/"
+    read_path_template: "/tmp/%Y/%m/%d/"
+    root: "/tmp"

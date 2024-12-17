@@ -2,3 +2,10 @@
 iocs:
   - "mutti-motor"
   - "mutti-detector"
+  - "pmh-motor"
+  - "pmh-detector"
+  - "example-motor-gjw"
+  - "example-detector-gjw"
+  - "example-motor"
+  - "example-detector"
+  - "example-eliot-motor"
