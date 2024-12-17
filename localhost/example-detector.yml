@@ -1,4 +1,4 @@
-example-detector:
+rivers-detector:
   type: "ADSimDetector"
   environment:
     PREFIX: "XF:31ID1-ES{ADSIM:EX}:"
